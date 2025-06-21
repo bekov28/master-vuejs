@@ -11,29 +11,32 @@
       <h1>{{uppercase()}}</h1>
       <p>Lucky Number: {{luckyNumber}}</p>
       <p>Lucky Number is an {{luckyNumber % 2 === 0 ? 'even number' : 'odd number'}}</p>
-      <p>Random Number from 1-10: {{getRandomLuckyNumber()}}</p>
+      <p>{{updateLuckyNumber()}}</p>
       <p>{{employee.name}} is {{employee.age}} years old.</p>
+      <p>His salary is {{employee.salary}}</p>
     </div>
   </body>
 
   <script>
-    const { createApp, ref } = Vue;
+    const { createApp, ref, reactive } = Vue;
 
     createApp({
       setup() {
         const message = "Hello Vue 3!";
         let luckyNumber = ref(9);
 
-        const employee = {
+        const employee = reactive({
+          //reactive doesnt work for primitives, use ref for them. Reactive cant be reassigned
           name: "John",
           age: 30,
           salary: 50000,
-        };
+        });
 
-        function getRandomLuckyNumber() {
-          luckyNumber.value = Math.floor(Math.random() * 10) + 1;
-          console.log("lucky number:" + luckyNumber.value);
-          return Math.floor(Math.random() * 10) + 1;
+        function updateLuckyNumber() {
+          setTimeout(() => {
+            luckyNumber.value = 77;
+            employee.salary = 60000;
+          }, 2000);
         }
 
         function uppercase() {
@@ -43,7 +46,7 @@
         return {
           luckyNumber,
           employee,
-          getRandomLuckyNumber,
+          updateLuckyNumber,
           uppercase,
         };
       },
