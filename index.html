@@ -9,6 +9,10 @@
   <body>
     <div id="app">
       <h1>{{message}}</h1>
+      <p>Lucky Number: {{luckyNumber}}</p>
+      <p>Lucky Number is an {{luckyNumber % 2 === 0 ? 'even number' : 'odd number'}}</p>
+      <p>Random Number from 1-10: {{getRandomLuckyNumber()}}</p>
+      <p>{{employee.name}} is {{employee.age}} years old.</p>
     </div>
   </body>
 
@@ -17,8 +21,24 @@
 
     createApp({
       setup() {
+        const message = "Hello Vue 3!";
+        const luckyNumber = 9;
+
+        const employee = {
+          name: "John",
+          age: 30,
+          salary: 50000,
+        };
+
+        function getRandomLuckyNumber() {
+          return Math.floor(Math.random() * 10) + 1;
+        }
+
         return {
-          message: "Hello Vue 3!",
+          message,
+          luckyNumber,
+          employee,
+          getRandomLuckyNumber,
         };
       },
     }).mount("#app");
