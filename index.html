@@ -8,12 +8,13 @@
   </head>
   <body>
     <div id="app">
-      <h1 v-html="getMessage()"></h1>
+      <h1>{{message}}</h1>
       <p>Lucky Number: {{luckyNumber}}</p>
-      <p>Lucky Number is an {{luckyNumber % 2 === 0 ? 'even number' : 'odd number'}}</p>
-      <p>{{updateLuckyNumber()}}</p>
       <p>{{employee.name}} is {{employee.age}} years old.</p>
       <p>His salary is {{employee.salary}}</p>
+      <p v-show="employee.hasCorporateCard">
+        Spending Limit for Card: {{employee.spendingLimit}}
+      </p>
     </div>
   </body>
 
@@ -23,31 +24,24 @@
     createApp({
       setup() {
         const message = "Hello Vue 3!";
-        let luckyNumber = ref(9);
+        let luckyNumber = [3, 5, 7, 11, 15];
+        const blogUrl = "https://www.dotnetmastery.com";
 
         const employee = reactive({
           //reactive doesnt work for primitives, use ref for them. Reactive cant be reassigned
           name: "John",
           age: 30,
           salary: 50000,
+          hasCorporateCard: false,
+          spendingLimit: 10000,
+          yearsWithCompany: 5,
         });
-
-        function updateLuckyNumber() {
-          setTimeout(() => {
-            luckyNumber.value = 77;
-            employee.salary = 60000;
-          }, 2000);
-        }
-
-        function getMessage() {
-          return `<h1><u>${message}</u></h1>`;
-        }
 
         return {
           luckyNumber,
           employee,
-          updateLuckyNumber,
-          getMessage,
+          blogUrl,
+          message,
         };
       },
     }).mount("#app");
