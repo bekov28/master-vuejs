@@ -9,12 +9,13 @@
   <body>
     <div id="app">
       <h1>{{message}}</h1>
-      <p>Lucky Number: {{luckyNumber}}</p>
+      Lucky Numbers:
+      <span v-for="(luckyNumber, index) in luckyNumbers">
+        <br />
+        {{luckyNumber}}
+      </span>
       <p>{{employee.name}} is {{employee.age}} years old.</p>
       <p>His salary is {{employee.salary}}</p>
-      <p v-show="employee.hasCorporateCard">
-        Spending Limit for Card: {{employee.spendingLimit}}
-      </p>
     </div>
   </body>
 
@@ -24,7 +25,7 @@
     createApp({
       setup() {
         const message = "Hello Vue 3!";
-        let luckyNumber = [3, 5, 7, 11, 15];
+        let luckyNumbers = [3, 5, 7, 11, 15];
         const blogUrl = "https://www.dotnetmastery.com";
 
         const employee = reactive({
@@ -38,7 +39,7 @@
         });
 
         return {
-          luckyNumber,
+          luckyNumbers,
           employee,
           blogUrl,
           message,
