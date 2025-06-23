@@ -9,8 +9,10 @@
   <body>
     <div id="app">
       <div>Learn Vue</div>
+      Name:
       <input v-model="name" />
       <br /><br />
+      Age:
       <input v-model="age" />
       <p>{{name}} is {{age}} years old</p>
     </div>
@@ -19,8 +21,8 @@
   <script>
     const { createApp, ref } = Vue;
 
-    let name = ref("Ben");
-    let age = ref(20);
+    const name = ref("Berd");
+    const age = 33;
 
     createApp({
       setup() {
