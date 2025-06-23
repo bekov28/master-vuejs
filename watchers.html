@@ -20,13 +20,26 @@
   </body>
 
   <script>
-    const { createApp, ref, computed } = Vue;
+    const { createApp, ref, computed, watch } = Vue;
 
     createApp({
       setup() {
         let counter = ref(0);
         let firstName = ref("Berdiyor");
         let lastName = ref("Orzikulov");
+
+        //Watcher (watcher doesnt return anything unlike computed, also it is mainly used if there is any limit etc)
+        //Watchers can be used with async
+        watch(
+          () => counter.value,
+          (newValue, oldValue) => {
+            console.log("Counter value changed from ", oldValue, "to", newValue);
+
+            if (newValue == 5) {
+              alert("Counter value is 5");
+            }
+          }
+        );
 
         const getFullName = computed(() => {
           return firstName.value + " " + lastName.value; //computed proprety automatically tracks firstName and lastName here
