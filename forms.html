@@ -14,7 +14,7 @@
     <div id="app" class="container">
       <form v-on:submit.prevent="handleSubmit">
         <div class="bg-info p-5 rounded m-5">
-          <div class="h2 text-center">Learn Vue</div>
+          <div class="h2 text-center">Learn Vue - Forms</div>
           <hr />
          <div class="input-group mb-3">
             <span class="input-group-text">Email</span>
@@ -28,6 +28,18 @@
             <span class="input-group-text">Phone</span>
             <input type="text" class="form-control" v-model="formObj.phone" />
          </div>
+         <div class="border p-1">
+          <label class="form-label">Gender</label><br>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" v-model="formObj.gender" 
+            value="male" name="inlineRadioOptions">Male
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" v-model="formObj.gender" 
+            value="male" name="inlineRadioOptions">Female
+          </div>
+        </div>
          <div class="input-group mb-3">
             <input type="checkbox" class="form-check-input" v-model="formObj.subscribe" />
             <label class="form-check-label"> &nbsp; Subscribe to newsletter</label>
@@ -49,6 +61,7 @@
   <script>
     const { createApp, ref, computed, watch, reactive } = Vue;
 
+    
     createApp({
       setup() {
         const formObj = reactive({
