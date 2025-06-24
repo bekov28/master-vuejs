@@ -16,17 +16,23 @@
         <div class="bg-info p-5 rounded m-5">
           <div class="h2 text-center">Learn Vue - Forms</div>
           <hr />
+          <div>
+            <ul>
+              <li v-for="error in errorList" class="text-danger">{{error}}</li>
+            </ul>
+          </div>
          <div class="input-group mb-3">
             <span class="input-group-text">Email</span>
             <input type="text" class="form-control" v-model="formObj.email" />
          </div>
          <div class="input-group mb-3">
             <span class="input-group-text">Name</span>
-            <input type="text" class="form-control" v-model="formObj.name" />
+            <input type="text" class="form-control" v-on:blur="validateName()" v-model="formObj.name" />
+            <div v-if="!formObj.isNameValid" class="text-danger">Name should be at least 3 characters</div>
          </div>
          <div class="input-group mb-3">
             <span class="input-group-text">Phone</span>
-            <input type="text" class="form-control" v-model="formObj.phone" />
+            <input type="text" class="form-control"  v-model="formObj.phone" />
          </div>
          <div class="border p-1">
           <label class="form-label">Gender</label><br>
@@ -35,11 +41,20 @@
             <input class="form-check-input" type="radio" v-model="formObj.gender" 
             value="male" name="inlineRadioOptions">Male
           </div>
+
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" v-model="formObj.gender" 
-            value="male" name="inlineRadioOptions">Female
+            value="female" name="inlineRadioOptions">Female
           </div>
+          <br>
+          <hr>
+          <select id="gender" v-model="formObj.gender" class="form-select">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
         </div>
+
          <div class="input-group mb-3">
             <input type="checkbox" class="form-check-input" v-model="formObj.subscribe" />
             <label class="form-check-label"> &nbsp; Subscribe to newsletter</label>
@@ -69,13 +84,39 @@
           name: "",
           phone: "",
           subscribe: false,
-          gender: "",
+          gender: "male",
+          isNameValid: true
         });
 
-        function handleSubmit() {
-            console.log(formObj)
+        const errorList = reactive([])
+
+        function validateName() {
+         if(formObj.name.length < 3) {
+            formObj.isNameValid = false;
+          } else {
+            formObj.isNameValid = true;
+          }
         }
-        return { formObj, handleSubmit };
+
+        function handleSubmit() {
+          errorList.length = 0; //clear out the array;
+          if(formObj.name.length < 3 ) {
+            errorList.push('Name should be at least 3 character long')
+          }
+          if(formObj.email === '') {
+            errorList.push('Email is required')
+          }
+          if(!formObj.subscribe) {
+            errorList.push('Please subscribe to newsletter')
+          }
+
+          //submit
+            console.log(formObj)
+            if(!errorList.length) {
+              alert('Form submitted successfully')
+            }
+        }
+        return { formObj, handleSubmit, validateName, errorList };
       },
     }).mount("#app");
   </script>
