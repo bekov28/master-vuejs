@@ -1,18 +1,21 @@
 <template>
   <div>{{ message }}</div>
-  <contact></contact>
-  <button-counter></button-counter>
+  
+  
+  <div>
+  <ButtonCounter></ButtonCounter>
+  <ButtonCounter></ButtonCounter>
+  <Contact></Contact> 
 </template>
+  </div>
 
-<script>
+
+<script setup>
+import { ref } from "vue";
+import ButtonCounter from "@/components/ButtonCounter.vue";
 import Contact from "./components/Contact.vue";
 
-export default {
-  setup() {
-    const message = "Hello Vue";
-    return { message };
-  },
-};
+const message = "Hello Vue";
 </script>
 
 <style></style>
