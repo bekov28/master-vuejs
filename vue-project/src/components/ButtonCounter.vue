@@ -1,6 +1,4 @@
-<template>
-  <button @click="count++">Clicked {{ count }} times!</button>
-</template>
+<template></template>
 
 <script setup>
 import { ref } from "vue";
