@@ -1,14 +1,15 @@
 <template>
   <div class="container">
     <div>{{ message }}</div>
-    <Contact name="Berdiyor" phone="010 0000 0000"></Contact>
+    <Contact name="Berdiyor" :phone="12345678" :ownerName="contactsOwner"></Contact>
   </div>
-</template>
+</template>s
 
 <script setup>
 import Contact from "./components/Contact.vue";
 
 const message = "Hello Vue";
+const contactsOwner = "dotnetmastery";
 </script>
 
 <style></style>
