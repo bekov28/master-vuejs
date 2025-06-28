@@ -1,7 +1,7 @@
 <template>
   <div class="bg-info rounded p-2 m-1">
     <div class="row">
-      <div class="col-6">
+      <div class="col-5">
         <h3>Name: {{ name }}</h3>
         <p>Email: {{ email }}</p>
         <p>Phone: {{ phone }}</p>
@@ -9,13 +9,16 @@
           *this contact info belongs to {{ ownerName }}
         </p>
       </div>
-      <div class="col-3">
+      <div class="col-4">
         <button
           @click="toggleFavorite"
-          :class="[isFavorite ? 'btn btn-warning' : 'btn btn-success']"
+          :class="[isFavorite ? 'btn btn-warning form-control' : 'btn btn-success form-control']"
         >
           {{ isFavorite ? "Remove" : "Add" }} Favorite
         </button>
+      </div>
+      <div class="col-3">
+        <LuckyNumber :maxNumber="100"></LuckyNumber>
       </div>
     </div>
   </div>
@@ -23,6 +26,7 @@
 
 <script setup>
 import { ref } from "vue";
+import LuckyNumber from "./LuckyNumber.vue";
 
 const props = defineProps({
   name: { type: String, required: true },
@@ -39,6 +43,4 @@ const emit = defineEmits(["update-favorite"]);
 function toggleFavorite() {
   emit("update-favorite", [props.isFavorite, props.name]);
 }
-
-
 </script>

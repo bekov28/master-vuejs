@@ -23,7 +23,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 import Contact from "./components/Contact.vue";
-import AddContact from "./components/AddContact.vue";
+
 
 const ownerName = ref("dotnetmastery");
 
