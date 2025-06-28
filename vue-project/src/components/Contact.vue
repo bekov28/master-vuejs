@@ -37,6 +37,6 @@ const email = ref("berd@gmail.com");
 const emit = defineEmits(["update-favorite"]);
 
 function toggleFavorite() {
-  emit("update-favorite");
+  emit("update-favorite", props.isFavorite);
 }
 </script>
