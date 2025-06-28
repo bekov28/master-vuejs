@@ -10,7 +10,12 @@
           <input type="text" class="form-control" v-model="contact.email" placeholder="Email" />
         </div>
         <div class="col-4">
-          <input type="text" class="form-control" v-model.number="contact.phone" placeholder="Phone" />
+          <input
+            type="text"
+            class="form-control"
+            v-model.number="contact.phone"
+            placeholder="Phone"
+          />
         </div>
         <div class="col-6 offset-3 p-2">
           <button type="submit" class="btn btn-secondary w-100">Add Contact</button>
@@ -21,7 +26,9 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, defineEmits } from "vue";
+
+const emit = defineEmits(["add-contact"]);
 
 const contact = reactive({
   name: "",
@@ -30,6 +37,11 @@ const contact = reactive({
 });
 
 function addContact() {
+  emit("add-contact", {
+    name: contact.name,
+    phone: contact.name,
+    email: contact.email,
+  });
   console.log(contact);
   contact.name = "";
   contact.phone = "";
