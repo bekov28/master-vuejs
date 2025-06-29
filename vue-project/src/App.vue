@@ -7,7 +7,7 @@
         <div class="col-6 text-end">Max Lucky Number: <input v-model.number="maxNumber" /></div>
       </div>
       <br /><br />
-      <AddContact @add-contact="onAddContact"></AddContact>
+      <AddContact :onAddContact="onAddContact"></AddContact>
       <div class="row">
         <div class="col-12" v-for="contact in contacts" :key="contact.name">
           <Contact
@@ -27,6 +27,7 @@
 <script setup>
 import { reactive, ref, provide } from "vue";
 import Contact from "./components/Contact.vue";
+import AddContact from "./components/AddContact.vue";
 
 const ownerName = ref("dotnetmastery");
 const maxNumber = ref(100);

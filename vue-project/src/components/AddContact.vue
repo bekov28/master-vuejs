@@ -26,9 +26,9 @@
 </template>
 
 <script setup>
-import { reactive, defineEmits } from "vue";
+import { reactive, defineProps } from "vue";
 
-const emit = defineEmits(["add-contact"]);
+const props = defineProps({ onAddContact: Function });
 
 const contact = reactive({
   name: "",
@@ -37,7 +37,7 @@ const contact = reactive({
 });
 
 function addContact() {
-  emit("add-contact", {
+  props.onAddContact({
     name: contact.name,
     phone: contact.name,
     email: contact.email,
