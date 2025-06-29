@@ -22,57 +22,22 @@
       </div>
     </div>
   </div> -->
-  <h1>{{ message }}</h1>
-  <button @click="showMessage">Show Message</button>
-  <h1>{{ count }}</h1>
-  <button @click="count++">Clicked {{ count }} times</button>
-  <ButtonCounter v-if="count == 1"></ButtonCounter>
+  <button @click="increment">Increment</button>
+  <button @click="decrement">Decrement</button><br />
+  <span>{{ count }}</span>
+  <br /><br />
+  <ButtonCounter />
 </template>
 
 <script setup>
+import { useCounter } from "@/composibles/useCounter.js";
+import ButtonCounter from "./components/ButtonCounter.vue";
+
+const { count, increment, decrement } = useCounter(100, 10);
+
 // import { reactive, ref, provide } from "vue";
 // import Contact from "./components/Contact.vue";
 // import AddContact from "./components/AddContact.vue";
-import ButtonCounter from "./components/ButtonCounter.vue";
-import {
-  ref,
-  onBeforeMount,
-  onMounted,
-  onBeforeUpdate,
-  onUpdated,
-  onBeforeUnmount,
-  onUnmounted,
-} from "vue";
-
-const message = ref("Hello Vue");
-const showMessage = () => {
-  message.value = "Hello Vue from function";
-};
-const count = ref(0);
-
-onBeforeMount(() => {
-  console.log("onBeforeMount - App.vue");
-});
-
-onMounted(() => {
-  console.log("onMounted - App.vue");
-});
-
-onBeforeUpdate(() => {
-  console.log("onBeforeUpdate  - App.vue");
-});
-
-onUpdated(() => {
-  console.log("onUpdated  - App.vue");
-});
-
-onBeforeUnmount(() => {
-  console.log("onBeforeUnmount  - App.vue");
-});
-
-onUnmounted(() => {
-  console.log("onUnmounted  - App.vue");
-});
 
 // const ownerName = ref("dotnetmastery");
 // const maxNumber = ref(100);

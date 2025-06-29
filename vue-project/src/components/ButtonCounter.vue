@@ -1,42 +1,11 @@
 <template>
-  <button @click="count++">Clicked {{ count }} times</button>
+  <button @click="increment">++</button>
+  <span>{{ count }}</span>
+  <button @click="decrement">--</button>
 </template>
 
 <script setup>
-import {
-  ref,
-  onBeforeMount,
-  onMounted,
-  onBeforeUpdate,
-  onUpdated,
-  onBeforeUnmount,
-  onUnmounted,
-} from "vue";
+import { useCounter } from "@/composibles/useCounter.js";
 
-
-
-onBeforeMount(() => {
-  console.log("onBeforeMount - ButtonCounter.vue");
-});
-
-onMounted(() => {
-  console.log("onMounted - ButtonCounter.vue");
-});
-
-onBeforeUpdate(() => {
-  console.log("onBeforeUpdate  - ButtonCounter.vue");
-});
-
-onUpdated(() => {
-  console.log("onUpdated  - ButtonCounter.vue");
-});
-
-onBeforeUnmount(() => {
-  console.log("onBeforeUnmount  - ButtonCounter.vue");
-});
-
-onUnmounted(() => {
-  console.log("onUnmounted  - ButtonCounter.vue");
-});
-const count = ref(0);
+const { count, increment, decrement } = useCounter();
 </script>
