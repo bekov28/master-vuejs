@@ -18,7 +18,7 @@
         </button>
       </div>
       <div class="col-3">
-        <LuckyNumber :maxNumber="100"></LuckyNumber>
+        <LuckyNumber></LuckyNumber>
       </div>
     </div>
   </div>
