@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container border rounded p-2">
     <div class="text-center text-white">Add New Contact</div>
     <form @submit.prevent="addContact">
@@ -47,4 +47,4 @@ function addContact() {
   contact.phone = "";
   contact.email = "";
 }
-</script>
+</script> -->

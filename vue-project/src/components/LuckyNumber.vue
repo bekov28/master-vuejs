@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="float-end">
     <button class="btn btn-outline-danger" @click="generateLuckyNumber()">
       <span v-if="luckyNumber === 0">
@@ -24,4 +24,4 @@ function generateLuckyNumber() {
   luckyNumber.value = Math.floor(Math.random() * maxNumber.value);
   console.log(luckyNumber.value);
 }
-</script>
+</script> -->
