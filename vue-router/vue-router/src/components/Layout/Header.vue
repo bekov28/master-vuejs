@@ -19,7 +19,7 @@
             <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/contact">Contact Us</router-link>
+            <router-link class="nav-link" :to="{name: 'contact'}">Contact Us</router-link>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -33,9 +33,11 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <router-link class="dropdown-item" to="productList">Product List</router-link>
+                <router-link class="dropdown-item" to="/productList">Product List</router-link>
               </li>
-              <li><router-link class="dropdown-item" to="">Product Details</router-link></li>
+              <li>
+                <router-link class="dropdown-item" to="/product">Product Details</router-link>
+              </li>
             </ul>
           </li>
         </ul>

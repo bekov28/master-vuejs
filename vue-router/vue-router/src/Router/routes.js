@@ -8,9 +8,16 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL) /*Vite Configuration*/,
   routes: [
     { path: "/", component: HomePage },
-    { path: "/contact", component: Contact },
+    { path: "/contact-us", component: Contact, name: "contact" },
+    { patj: "contact", redirect: { name: "contact" } },//redirecting contact to contact-us page
     { path: "/productList", component: ProductList },
-    { path: "/product/:productId", component: ProductDetail },
+    {
+      path: "/product/:productId/:categoryId?",
+      component: ProductDetail,
+      name: "productDetails",
+      props: true,
+    },
+    { path: "/product", component: ProductDetail },
   ],
 });
 export default router;
