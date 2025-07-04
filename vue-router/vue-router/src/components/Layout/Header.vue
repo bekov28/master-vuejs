@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/">Home Page</router-link>
+            <router-link class="nav-link" aria-current="page" to="/">Home Page</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'contact' }">Contact Us</router-link>
@@ -42,7 +42,7 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <a class="nav-link" aria-disabled="true">Login</a>
+          <router-link class="nav-link" aria-disabled="true" to="/login">Login</router-link>
         </form>
       </div>
     </div>

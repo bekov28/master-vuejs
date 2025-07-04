@@ -8,6 +8,7 @@
         >{{ product.name }}</router-link
       >
     </div>
+    <button @click="$router.go(-1)">Back</button>
   </div>
 </template>
 
