@@ -1,24 +1,30 @@
 <template>
   <h1>JSON Server Demo using Axios</h1>
   <br /><br />
-  <div v-for="user in userObject.users" :key="user.id">
-    <h2>{{ user.id }}. {{ user.name }}</h2>
-    <p>{{ user.email }}</p>
+  <div v-for="post in postObject.posts" :key="post.id">
+    <h2>{{ post.id }}. {{ post.title }}</h2>
+    <p>{{ post.views }}</p>
   </div>
 </template>
 <script setup>
 import { reactive, onMounted } from "vue";
 import axios from "axios";
 
-const userObject = reactive({
-  users: [],
+const postObject = reactive({
+  posts: [],
 });
 
 onMounted(() => {
-  axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+  // fetch("https://jsonplaceholder.typicode.com/users")
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data)
+  //     userObject.users = data;
+  //   })
+  //   .catch((err) => err);
+  axios.get("http://localhost:3000/posts").then((response) => {
     console.log(response.data);
-
-    userObject.users = response.data;
+    postObject.posts = response.data;
   });
 });
 </script>
